@@ -20,6 +20,10 @@
         flex-direction: column;
         align-items: center;
         gap: 15px;
+
+        @media(max-width: 650px) {
+            width: 100%;
+        }
         img {
             max-height: 250px;
         }

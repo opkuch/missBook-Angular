@@ -1,9 +1,16 @@
-:host {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
+.book-list-wrapper {
 
-.book-list {
-    margin-top: 50px;
-    background-color: inherit;
+    .book-list {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-top: 50px;
+        background-color: inherit;
+    
+        @media(max-width: 1250px) {
+            grid-template-columns: 100%;
+        }
+    }
+    @media(max-width: 900px) {
+        padding-inline: 0;
+    }
 }

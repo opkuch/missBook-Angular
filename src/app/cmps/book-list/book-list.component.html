@@ -1,3 +1,6 @@
-<ul class="clean-list book-list" *ngFor="let book of books">
-  <book-preview [book]="book"></book-preview>
-</ul>
+
+<section class="narrow-container book-list-wrapper">
+  <ul class="clean-list book-list">
+    <book-preview *ngFor="let book of books" [book]="book"></book-preview>
+  </ul>
+</section>
