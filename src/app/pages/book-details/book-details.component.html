@@ -1,0 +1,14 @@
+<section *ngIf="book" class="details-container">
+    <div class="book-details">
+        <a class="back" routerLink="/explore">X</a>
+        <img [src]="'assets/img/' + book.imgUrl"/>
+        <div class="book-info flex column">
+            <h2>{{book.title}}</h2>
+            <span class="small-title">{{book.author}}</span>
+            <p>
+                {{book.description}}
+            </p>
+
+        </div>
+    </div>
+</section>

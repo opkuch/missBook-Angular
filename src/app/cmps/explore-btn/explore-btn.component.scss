@@ -1,0 +1,168 @@
+.explore-btn {
+    width: 1px;
+    transition: all 0.2s;
+    &.-left {
+      position: absolute;
+      top: 60%;
+      left: 0;
+  
+      > .shaft {
+        width: 0;
+        background-color: #000;
+        
+        &:before,
+        &:after {
+          width: 0;
+          background-color: #000;
+        }
+  
+        &:before {
+          transform: rotate(0);
+        }
+  
+        &:after {
+          transform: rotate(0);
+        }
+      }
+    }
+    
+    &.-right {
+      top: 3px;
+      
+      > .shaft {
+        width: 1px;
+        transition-delay: 0.2s;
+  
+        &:before,
+        &:after { 
+          width: 8px;
+          transition-delay: 0.3s;
+          transition: all 0.5s;
+        }
+        
+        &:before {
+          transform: rotate(40deg);
+        }
+        
+        &:after {
+          transform: rotate(-40deg);
+        }
+      }
+    }
+  
+    > .shaft {
+      background-color: #000;
+      display: block;
+      height: 1px;
+      position: relative;
+      transition: all 0.2s;
+      transition-delay: 0;
+      will-change: transform;
+  
+      &:before,
+      &:after {
+        background-color: #000;
+        content: '';
+        display: block;
+        height: 1px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: all 0.2s;
+        transition-delay: 0;
+      }
+  
+      &:before {
+        transform-origin: top right;
+      }
+  
+      &:after {
+        transform-origin: bottom right;
+      }
+    }
+  }
+  
+  
+  
+  // Animated Arrow Button
+  
+  .animated-arrow {
+    display: inline-block;
+    color: #000;
+    font-size: 1.25em;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.2s;
+    // margin-inline-start: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    &:hover {
+      color: rgba(46, 41, 41, 0.765);
+      > .explore-btn.-left {
+        > .shaft {
+          width: 30px;
+          transition-delay: 0.1s;
+          background-color: rgba(46, 41, 41, 0.765);
+  
+          &:before,
+          &:after {
+            width: 8px;
+            transition-delay: 0.1s;
+            background-color: rgba(46, 41, 41, 0.765);
+          }
+  
+          &:before {
+            transform: rotate(40deg);
+          }
+  
+          &:after {
+            transform: rotate(-40deg);
+          }
+        }
+      }
+      
+      > .main {
+        transform: translateX(17px);
+        transform: translateX(30px);
+        
+        > .explore-btn.-right {
+          > .shaft {
+            width: 0;
+            transform: translateX(200%);
+            transition-delay: 0;
+            
+            &:before,
+            &:after {
+              width: 0;
+              transition-delay: 0;
+              transition: all 0.1s;
+            }
+  
+            &:before {
+              transform: rotate(0);
+            }
+  
+            &:after {
+              transform: rotate(0);
+            }
+          }
+        }
+      }
+    }
+    
+    > .main {
+      display: flex;
+      align-items: center;
+      transition: all 0.2s;
+      
+      > .text {
+        margin: 0 16px 0 0;
+        line-height: 1;
+      }
+      
+      > .explore-btn {
+        position: relative;
+      }
+    }
+  }
+  

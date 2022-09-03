@@ -1,0 +1,9 @@
+<li class="flex book-card">
+    <img [src]="'assets/img/' + book.imgUrl" />
+    <section class="info">
+        <h3 class="details-title" (click)="details()">{{book.title}}</h3>
+        <h5>{{book.author}}</h5>
+            <p [ngClass]="{'limit-txt': true}">{{book.description}}</p> <span class="read-more" (click)="details()">... Read More</span>
+        <p>⭐⭐⭐⭐⭐ <span class="small-title smaller">4.29 avg rating - 387 ratings</span></p>
+    </section>
+</li>

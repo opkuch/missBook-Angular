@@ -1,0 +1,32 @@
+.book-card {
+    padding: 1rem;
+    overflow: hidden;
+    box-shadow: 0 -1px rgba(162, 159, 159, 0.37);
+    gap: 1rem;
+    max-width: 625px;
+    img {
+        max-height: 120px;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        p {
+        overflow: hidden;
+    }
+}
+.details-title, .read-more {
+    align-self: flex-start;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+}
+
+.limit-txt {
+    max-height: 40px;
+    &::after {
+        content: 'Read More';
+    }
+}

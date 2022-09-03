@@ -1,0 +1,17 @@
+.book-logo {
+    font-family: 'Nanum Gothic';
+    h1 {
+        font-weight: 200;
+        color: rgb(122, 29, 29);
+        margin: 0;
+        font-size: 1.75rem;
+        span {
+            font-family: 'Nanum Gothic';
+            font-weight: 700;
+            color: rgb(103, 31, 31);
+        }
+    }
+    @media(max-width: 350px) {
+        margin-inline-start: 3.5rem;
+    }
+}

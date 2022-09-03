@@ -1,0 +1,52 @@
+.home-wrapper {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    margin-block-start: 2rem;
+    gap: 10px;
+    .ad {
+        grid-column: 2;
+        img {
+            max-height: 200px;
+        }
+    @media(max-width: 900px) {
+        grid-column: 1;
+    }
+    }
+    @media(max-width: 900px) {
+        padding-inline: 30px;
+    }
+
+}
+
+.home-paragraphs {
+    margin-block-start: 1rem;
+    gap: 30px;
+    p {
+        max-width: 300px;
+        word-wrap: break-word;
+        line-height: 20px;
+        margin-block-start: 1rem;
+        font-size: 14px;
+    }
+
+    @media(max-width: 900px) {
+        flex-direction: column;
+        padding-inline: 30px;
+    }
+}
+
+.quote-wrapper {
+    transition: all 600ms;
+    opacity: 1;
+    &.fade {
+        opacity: 0;
+    }
+}
+.quote-title {
+    padding-block: 1rem;
+}
+
+.quote-info {
+    display: flex;
+    flex-direction: column;
+}

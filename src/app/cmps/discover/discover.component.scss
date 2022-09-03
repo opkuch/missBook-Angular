@@ -1,0 +1,15 @@
+.discover-container {
+    margin-block-start: 1rem;
+    gap: 3px;
+    background-color: #ffedd9a2;
+    padding: 1rem;
+    outline: 1.5px solid rgba(0, 0, 0, 0.078);
+    img {
+        max-height: 100px;
+    }
+    gap: 10px;
+    .covers-container {
+        gap: 5px;
+    }
+}
+

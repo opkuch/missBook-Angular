@@ -1,0 +1,19 @@
+<section class="flex column discover-container">
+    <h4>Browse more fantasy books</h4>
+    <div class="covers-container flex align-center">
+        <div>
+            <img *ngFor="let book of fantasyBooks" [src]="'assets/img/' + book.imgUrl"/>
+        </div>
+        <explore-btn></explore-btn>
+    </div>
+</section>
+
+<section class="flex column discover-container">
+    <h4>Browse more thriller books</h4>
+    <div class="covers-container flex align-center">
+        <div>
+            <img *ngFor="let book of thrillerBooks" [src]="'assets/img/' + book.imgUrl"/>
+        </div>
+        <explore-btn></explore-btn>
+    </div>
+</section>
