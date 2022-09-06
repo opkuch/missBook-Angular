@@ -8,7 +8,7 @@
 
 <p>Virtual library in construction 👷</p>
 
-<p>Currently working on adding user management functionality</p>
+<p>Serverless with Firestore and Firebase Auth</p>
 
 
 ## Built with
@@ -16,3 +16,4 @@
 <p>AngularJS</p>
 <p>RxJS</p>
 <p>SASS</p>
+<p>Firebase</p>
