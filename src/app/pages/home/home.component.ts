@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   books$!: Observable<BookModel[]>
   subscription!: Subscription
   quote: any | null = null
-  quoteIntervalID: number = 0
+  quoteIntervalID: ReturnType<typeof setInterval> | null = null
   isFade: Boolean = false
 
   constructor(public BookService: BookService, public QuoteService: QuoteService) { }
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.subscription = this.QuoteService.getQuotesFromApi().subscribe(quote => {
       this.quote= quote
     })
-    setInterval(() => {
+    this.quoteIntervalID = setInterval(() => {
       this.subscription = this.QuoteService.getQuotesFromApi().subscribe(quote => {
         this.isFade = true
         setTimeout(() => {
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
-    clearInterval(this.quoteIntervalID)
+    if (this.quoteIntervalID) clearInterval(this.quoteIntervalID)
   }
 
 }

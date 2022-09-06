@@ -33,4 +33,9 @@ export class UtilService {
     var str = localStorage[key] || 'null';
     return JSON.parse(str);
   }
+
+  public refresh(): void {
+    window.location.reload();
+}
+
 }

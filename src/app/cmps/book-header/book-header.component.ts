@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { UserModel } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'book-header',
   templateUrl: './book-header.component.html',
@@ -7,10 +9,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class BookHeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() logout!: null
+  constructor(private AuthService: AuthService, private router: Router) { 
+  }
+  onLogout() {
+    this.AuthService.signout()
+    console.log(localStorage.getItem('user'))
+    this.router.navigateByUrl('/home')
+  }
 
   ngOnInit(): void {
-    
   }
 
 

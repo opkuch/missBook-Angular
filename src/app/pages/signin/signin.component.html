@@ -1,0 +1,15 @@
+<section class="container flex column align-center justify-center signin-wrapper">
+    <h1>Log in to your account</h1>
+        <form class="flex column" (ngSubmit)="onSignin()">
+            <label for="email">
+                <input [(ngModel)]="user.email" type="email" name="email" id="email" placeholder="Email">
+            </label>
+            <label for="password">
+                <input [(ngModel)]="user.password" type="password" name="password" id="password" placeholder="Password">
+            </label>
+            <button class="nice-button">Sign in</button>
+        </form>
+    </section>
+    <div class="imgs">
+        <img class="signin-img" src="assets/img/read-book.png"/>
+    </div>

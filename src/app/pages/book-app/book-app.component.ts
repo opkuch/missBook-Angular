@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookModel } from '../../models/book.model';
 import { BookService } from '../../services/bookservice/book.service';
-import { Observable, Subscription } from 'rxjs';
-import { last } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'book-app',
@@ -12,15 +11,11 @@ import { last } from 'rxjs/operators';
 export class BookAppComponent implements OnInit {
 
   public books$!: Observable<BookModel[]>
-  subscription!: Subscription
   constructor(public BookService: BookService) { }
 
   ngOnInit(): void {
     this.BookService.loadBooks()
     this.books$ = this.BookService.books$
-  }
-
-  ngOnDestroy() {
   }
 
 }

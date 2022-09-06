@@ -1,6 +1,13 @@
-.user-nav {
+.signed-out {
     gap: 20px;
     > * {
         padding-inline: 1rem;
     }
+    font-family: 'Nanum Gothic';
+}
+
+.signed-in {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }

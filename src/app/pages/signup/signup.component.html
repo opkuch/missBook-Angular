@@ -1,16 +1,15 @@
-<section class="container flex column align-center signup-wrapper">
-    <h1>Join our community!</h1>
-        <form class="flex column" action="">
-            <label for="username">
-                <input type="text" name="username" placeholder="Username">
-            </label>
-            <label for="password">
-                <input type="text" name="password" placeholder="Password">
-            </label>
-            <button class="nice-button">Go</button>
-        </form>
+<section class="container flex column align-center justify-center signup-wrapper">
+        <h1>Join our community!</h1>
+            <form class="flex column" (ngSubmit)="onSignup()">
+                <label for="email">
+                    <input [(ngModel)]="user.email" type="email" name="email" id="email" placeholder="Email">
+                </label>
+                <label for="password">
+                    <input [(ngModel)]="user.password" type="password" name="password" id="password" placeholder="Password">
+                </label>
+                <button class="nice-button">Go</button>
+            </form>
+        </section>
         <div class="imgs">
-            <img class="signup-img" src="assets/img/read-book.png"/>
-            <img class="signup-img" src="assets/img/lady-read.png"/>
+            <img class="signup-img" src="assets/img/lady-reading.png"/>
         </div>
-</section>

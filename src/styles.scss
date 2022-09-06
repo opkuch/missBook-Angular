@@ -12,7 +12,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background-color: rgb(243, 241, 241);
+//   background-color: rgb(243, 241, 241);
   font-family: 'Lato';
 }
 
@@ -42,13 +42,13 @@ input {
    }
 }
 .main-nav-item {
-    // border-radius: 3px;
     color: rgb(91, 41, 20);
     min-height: 60px;
     padding-block: 0.7rem;
     padding-inline: 0.3rem;
     display: flex;
     align-items: center;
+    cursor: pointer;
     &.selected {
         background-color: #cfa6a640;
     }

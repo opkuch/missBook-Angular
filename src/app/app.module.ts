@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-root/app.component';
@@ -18,7 +22,18 @@ import { UserNavbarComponent } from './cmps/user-navbar/user-navbar.component';
 import { FilterComponent } from './cmps/filter/filter.component';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { environment } from '../environments/environment';
+import { SigninComponent } from './pages/signin/signin.component';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyApUkhOG6XKFLhBOz5PAu8e2DblfiYhIEg",
+  authDomain: "missbooks-13d4f.firebaseapp.com",
+  projectId: "missbooks-13d4f",
+  storageBucket: "missbooks-13d4f.appspot.com",
+  messagingSenderId: "632164729990",
+  appId: "1:632164729990:web:4bb5c778ffbb054dc1fd07",
+  measurementId: "G-NSVEWWXF1G"
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,13 +51,18 @@ import { SignupComponent } from './pages/signup/signup.component';
     FilterComponent,
     BookDetailsComponent,
     SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

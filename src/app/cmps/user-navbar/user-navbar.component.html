@@ -1,8 +1,18 @@
 <nav class="user-nav flex align-center">
-    <a class='main-nav-item' routerLink="/signin" routerLinkActive="selected">
-        Sign in
-    </a>  
-    <a exact class='main-nav-item' routerLink="/signup" routerLinkActive="selected">
-        Join
-    </a>  
+    <section *ngIf="!user; else signedIn" class="signed-out flex align-center">
+        <a class='main-nav-item' routerLink="/signin" routerLinkActive="selected">
+            Sign in
+        </a>  
+        <a exact class='main-nav-item' routerLink="/signup" routerLinkActive="selected">
+            Join
+        </a>  
+    </section>
+
+    <ng-template #signedIn >
+        <section class="signed-in">
+            <span>Signed in as {{user?.email}}</span>
+            <a class="main-nav-item" (click)="onLogout()">Logout</a>
+        </section>
+
+    </ng-template>
   </nav>
