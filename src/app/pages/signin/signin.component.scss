@@ -1,14 +1,13 @@
 .signin-wrapper {
     h1 {
         font-size: 3.5rem;
+        @media(max-width: 700px) {
+            font-size: 2rem;
+        }
     }
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -80%);
     gap: 30px;
     padding: 1.5rem;
-
+    margin-block-start: 5rem;
     form {
         gap: 5px;
         input {
@@ -18,12 +17,6 @@
 }
 .signin-img {
         max-width: 450px;
-        position: absolute;
-        bottom: 50px;
-        right: 100px;
-    @media(max-width: 1250px) {
-        max-width: 400px;
-    }
 
     @media(max-width: 500px) {
         right: 20px;

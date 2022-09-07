@@ -11,5 +11,11 @@
     .covers-container {
         gap: 5px;
     }
+    
+    .cover-imgs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
 }
 

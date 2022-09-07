@@ -1,6 +1,9 @@
 <section class="container flex column align-center justify-center signup-wrapper">
         <h1>Join our community!</h1>
             <form class="flex column" (ngSubmit)="onSignup()">
+                <label for="name">
+                    <input [(ngModel)]="user.displayName" type="text" name="name" id="name" placeholder="Name">
+                </label>    
                 <label for="email">
                     <input [(ngModel)]="user.email" type="email" name="email" id="email" placeholder="Email">
                 </label>
@@ -9,7 +12,7 @@
                 </label>
                 <button class="nice-button">Go</button>
             </form>
+            <div class="imgs">
+                <img class="signup-img" src="assets/img/lady-reading.png"/>
+            </div>
         </section>
-        <div class="imgs">
-            <img class="signup-img" src="assets/img/lady-reading.png"/>
-        </div>

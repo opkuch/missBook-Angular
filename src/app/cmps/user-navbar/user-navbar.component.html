@@ -1,5 +1,5 @@
 <nav class="user-nav flex align-center">
-    <section *ngIf="!user; else signedIn" class="signed-out flex align-center">
+    <section *ngIf="!isUser; else signedIn" class="signed-out flex align-center">
         <a class='main-nav-item' routerLink="/signin" routerLinkActive="selected">
             Sign in
         </a>  
@@ -10,7 +10,6 @@
 
     <ng-template #signedIn >
         <section class="signed-in">
-            <span>Signed in as {{user?.email}}</span>
             <a class="main-nav-item" (click)="onLogout()">Logout</a>
         </section>
 
