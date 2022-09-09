@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BookModel } from '../../models/book.model';
 import { BookService } from '../../services/bookservice/book.service';
-import { Observable, take, map, tap, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { QuoteService } from '../../services/quoteservice/quote.service';
-import { QuoteModel } from '../../models/quote.model';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,13 +16,11 @@ export class HomeComponent implements OnInit {
   quote: any | null = null
   quoteIntervalID: ReturnType<typeof setInterval> | null = null
   isFade: Boolean = false
-
   constructor(public BookService: BookService, public QuoteService: QuoteService) { }
 
   ngOnInit(): void {
     this.BookService.loadBooks()
     this.books$ = this.BookService.books$
-    
     this.subscription = this.QuoteService.getQuotesFromApi().subscribe(quote => {
       this.quote= quote
     })

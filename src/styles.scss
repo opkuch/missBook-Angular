@@ -20,6 +20,24 @@ body {
     margin: 0;
 }
 
+.user-msg {
+    position: fixed;
+    top:  100px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 3px;
+    outline: 1.5px solid rgba(245, 245, 245, 0.16);
+    &.success {
+        background-color: rgb(49, 206, 49);
+        color: whitesmoke;
+
+    }
+    &.error {
+        background-color: rgb(185, 32, 32);
+        color: whitesmoke;
+    }
+}
+
 a {
     text-decoration: none;
     color: inherit;

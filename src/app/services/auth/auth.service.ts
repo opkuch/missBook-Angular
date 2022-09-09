@@ -9,6 +9,8 @@ import * as auth from 'firebase/auth';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UtilService } from '../utilservice/util.service';
 import { UserService } from '../user/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,9 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     private UtilService: UtilService,
-    private UserService: UserService
+    private UserService: UserService,
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.authStatusListener();
   }
@@ -33,7 +37,6 @@ export class AuthService {
       if(credential){
         console.log(credential)
         this.authStatusSub.next(credential)
-
       }
       else{
         this.authStatusSub.next(null)
@@ -41,15 +44,26 @@ export class AuthService {
       }
     })
   }
-  
+
+  showMsg(body: string, title: string, type: string) {
+    this.toastr.success(title,body, {
+      toastClass: `user-msg ${type}`,
+      positionClass: 'toast-top-right'            
+    });
+  }
+
+
   async signin(user: UserModel) {
     const { email, password } = user
     try {
       if (email && password) {
         this.userData = await this.afAuth.signInWithEmailAndPassword(email, password)
+        this.showMsg('', 'Login succeeded!', 'success')
+        this.router.navigateByUrl('/home')
       }
     } catch(err) {
       console.log(err, "Couldn't signup")
+      this.showMsg('', 'Login failed!', 'error')
     }
 
   }
@@ -62,15 +76,28 @@ export class AuthService {
         await this.userData.user.updateProfile({displayName})
         const {uid} = this.userData.user
         await this.UserService.SetUserData({uid, email, displayName})
+        this.showMsg('', 'Signup succeeded!', 'success')
+        this.router.navigateByUrl('/home')
+
       }
 
     } catch(err) {
       console.log(err, "Couldn't signup")
+      this.showMsg('', 'Signup failed!', 'error')
+
     }
   }
 
   async signout() {
-    await this.afAuth.signOut()
+    try {
+      await this.afAuth.signOut()
+      this.showMsg('', 'Logout succeeded!', 'success')
+
+    }catch(err) {
+      console.log('cannot logout', err)
+      this.showMsg('', 'Logout failed!', 'error')
+
+    }
     localStorage.removeItem('user')
   }
 

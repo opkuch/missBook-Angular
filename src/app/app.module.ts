@@ -5,6 +5,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-root/app.component';
@@ -24,16 +26,8 @@ import { BookDetailsComponent } from './pages/book-details/book-details.componen
 import { SignupComponent } from './pages/signup/signup.component';
 import { environment } from '../environments/environment';
 import { SigninComponent } from './pages/signin/signin.component';
+import { LoaderComponent } from './cmps/loader/loader.component';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyApUkhOG6XKFLhBOz5PAu8e2DblfiYhIEg",
-  authDomain: "missbooks-13d4f.firebaseapp.com",
-  projectId: "missbooks-13d4f",
-  storageBucket: "missbooks-13d4f.appspot.com",
-  messagingSenderId: "632164729990",
-  appId: "1:632164729990:web:4bb5c778ffbb054dc1fd07",
-  measurementId: "G-NSVEWWXF1G"
-};
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +46,7 @@ const firebaseConfig = {
     BookDetailsComponent,
     SignupComponent,
     SigninComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,9 +55,16 @@ const firebaseConfig = {
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule, 
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({iconClasses: {
+      error: 'toast-error',
+      info: 'toast-info',
+      success: 'toast-success',
+      warning: 'toast-warning',
+    }})
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

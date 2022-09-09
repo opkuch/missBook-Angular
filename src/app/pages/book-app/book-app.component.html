@@ -1,4 +1,5 @@
 <section class="container books-container">
-    <book-list [books] = "books$ | async"></book-list>
+    <book-list *ngIf="!isLoading; else showLoader" [books] = "books$ | async"></book-list>
+    <ng-template #showLoader><loader></loader></ng-template>
     <router-outlet></router-outlet>
 </section>

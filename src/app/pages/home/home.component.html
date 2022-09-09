@@ -1,41 +1,44 @@
-<app-hero></app-hero>
-<div class="narrow-container home-paragraphs flex">
-  <section>
-    <h3>Deciding what to read next?</h3>
-    <p>
-      You’re in the right place. Tell us what titles or genres you’ve enjoyed in
-      the past, and we’ll give you surprisingly insightful recommendations.
-    </p>
-  </section>
-  <section>
-    <h3>What are your friends reading?</h3>
-    <p>
-      Chances are your friends are discussing their favorite (and least
-      favorite) books on missBooks.
-    </p>
+<div>
+  <app-hero></app-hero>
+  <div class="narrow-container home-paragraphs flex">
+    <section>
+      <h3>Deciding what to read next?</h3>
+      <p>
+        You’re in the right place. Tell us what titles or genres you’ve enjoyed
+        in the past, and we’ll give you surprisingly insightful recommendations.
+      </p>
+    </section>
+    <section>
+      <h3>What are your friends reading?</h3>
+      <p>
+        Chances are your friends are discussing their favorite (and least
+        favorite) books on missBooks.
+      </p>
+    </section>
+  </div>
+  <section class="narrow-container home-wrapper">
+    <section class="discover-books">
+      <h3>Books to discover</h3>
+      <a></a>
+      <discover [books]="books$ | async"></discover>
+      <h3 class="quote-title">Get inspired while you're here..</h3>
+      <section *ngIf="quote" class="quote-wrapper" [ngClass]="{ fade: isFade }">
+        <div class="quote-info">
+          <h2>{{ quote.text }}</h2>
+          <span class="small-title">{{ quote.author }}</span>
+        </div>
+      </section>
+    </section>
+    <section class="ad">
+      <img
+        src="https://thepienews.com/wp-content/uploads/2011/10/ad-placeholder-empty-without.png"
+      />
+      <img
+        src="https://thepienews.com/wp-content/uploads/2011/10/ad-placeholder-empty-without.png"
+      />
+      <img
+        src="https://thepienews.com/wp-content/uploads/2011/10/ad-placeholder-empty-without.png"
+      />
+    </section>
   </section>
 </div>
-<section class="narrow-container home-wrapper">
-  <section class="discover-books">
-    <h3>Books to discover</h3>
-    <discover [books]="books$ | async"></discover>
-    <h3 class="quote-title">Get inspired while you're here..</h3>
-    <section *ngIf="quote" class="quote-wrapper" [ngClass]="{'fade': isFade}">
-        <div class="quote-info" >
-            <h2>{{quote.text}}</h2>
-            <span class="small-title">{{quote.author}}</span>
-        </div>
-    </section>    
-  </section>
-  <section class="ad">
-    <img
-      src="https://thepienews.com/wp-content/uploads/2011/10/ad-placeholder-empty-without.png"
-    />
-    <img
-      src="https://thepienews.com/wp-content/uploads/2011/10/ad-placeholder-empty-without.png"
-    />
-    <img
-    src="https://thepienews.com/wp-content/uploads/2011/10/ad-placeholder-empty-without.png"
-  />
-  </section>
-</section>
