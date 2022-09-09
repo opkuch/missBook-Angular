@@ -8,7 +8,6 @@ import { UserModel } from 'src/app/models/user.model';
 import * as auth from 'firebase/auth';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UtilService } from '../utilservice/util.service';
-import { UserService } from '../user/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -22,15 +21,28 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     private UtilService: UtilService,
-    private UserService: UserService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private db: AngularFirestore
   ) {
     this.authStatusListener();
   }
   currentUser: any = null
   private authStatusSub = new BehaviorSubject(this.currentUser)
   public currentAuthStatus = this.authStatusSub.asObservable()
+  SetUserData(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.db.doc(
+      `users/${user.uid}`
+    )
+    const userData: UserModel = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+    }
+    return userRef.set(userData, {
+      merge: true,
+    })
+  }
 
   authStatusListener(){
     this.afAuth.onAuthStateChanged((credential)=>{
@@ -75,7 +87,7 @@ export class AuthService {
         this.userData = await this.afAuth.createUserWithEmailAndPassword(email, password)
         await this.userData.user.updateProfile({displayName})
         const {uid} = this.userData.user
-        await this.UserService.SetUserData({uid, email, displayName})
+        await this.SetUserData({uid, email, displayName})
         this.showMsg('', 'Signup succeeded!', 'success')
         this.router.navigateByUrl('/home')
 

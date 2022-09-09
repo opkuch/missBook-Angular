@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BookModel } from '../../models/book.model';
-import { BookService } from '../../services/bookservice/book.service';
+import { BookService } from '../../services/book-service/book.service';
 import { Observable, Subscription } from 'rxjs';
-import { QuoteService } from '../../services/quoteservice/quote.service';
+import { QuoteService } from '../../services/quote-service/quote.service';
 
 @Component({
   selector: 'app-home',

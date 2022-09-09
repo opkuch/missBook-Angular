@@ -27,7 +27,6 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { environment } from '../environments/environment';
 import { SigninComponent } from './pages/signin/signin.component';
 import { LoaderComponent } from './cmps/loader/loader.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +45,7 @@ import { LoaderComponent } from './cmps/loader/loader.component';
     BookDetailsComponent,
     SignupComponent,
     SigninComponent,
-    LoaderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -57,12 +56,7 @@ import { LoaderComponent } from './cmps/loader/loader.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({iconClasses: {
-      error: 'toast-error',
-      info: 'toast-info',
-      success: 'toast-success',
-      warning: 'toast-warning',
-    }})
+    ToastrModule.forRoot({ preventDuplicates: true })
   ],
   providers: [],
   bootstrap: [AppComponent]

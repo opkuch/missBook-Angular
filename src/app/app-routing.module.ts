@@ -6,6 +6,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { BookResolver } from './services/book-resolver/book.resolver';
 
 const routes: Routes = [
     {
@@ -14,21 +15,18 @@ const routes: Routes = [
         children: [
           {
             path: ':id',
-            component: BookDetailsComponent
+            component: BookDetailsComponent,
+            resolve: {book: BookResolver}
           }
         ]
     },
 
     // { path: "about", component: AboutComponent },
-    {
-      path: 'signup', component: SignupComponent
-    },
-    {
-      path: 'signin', component: SigninComponent
-    },
+    { path: 'signup', component: SignupComponent },
+    { path: 'signin', component: SigninComponent },
     { path: "home", component: HomeComponent },
     { path: "", redirectTo: "/home", pathMatch: "full" },
-    //   { path: "**", component: PageNotFoundComponent },
+    { path: "**", component: HomeComponent },
 ];
 
 @NgModule({

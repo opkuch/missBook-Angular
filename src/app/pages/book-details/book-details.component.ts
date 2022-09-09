@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, lastValueFrom } from 'rxjs';
 import { BookModel } from 'src/app/models/book.model';
-import { BookService } from 'src/app/services/bookservice/book.service';
+import { BookService } from 'src/app/services/book-service/book.service';
 
 @Component({
   selector: 'book-details',
@@ -16,9 +16,8 @@ export class BookDetailsComponent implements OnInit {
   book!: BookModel
   subscription!: Subscription
   ngOnInit(): void {
-    this.subscription = this.route.params.subscribe(async params => {
-      const book = await lastValueFrom(this.BookService.getById(params['id']))
-      if (book) this.book = book
+    this.route.data.subscribe(data => {
+      this.book = data['book']
     })
   }
 
