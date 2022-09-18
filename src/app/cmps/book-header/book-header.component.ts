@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'book-header',

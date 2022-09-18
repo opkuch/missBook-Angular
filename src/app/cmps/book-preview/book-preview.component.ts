@@ -12,6 +12,7 @@ export class BookPreviewComponent {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   details() {
+    console.log(this.book)
     this.router.navigate([this.book._id], {relativeTo:this.route});
 
   }

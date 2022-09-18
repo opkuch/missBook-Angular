@@ -1,4 +1,8 @@
 :host {
     flex-basis: 40%;
 }
-
+input {
+    @media (max-width: 450px) {
+        width: fit-content;
+    }
+}

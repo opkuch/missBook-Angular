@@ -10,12 +10,15 @@
     gap: 10px;
     .covers-container {
         gap: 5px;
+        flex-wrap: wrap;
+
     }
     
     .cover-imgs {
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+        min-width: 150px;
     }
 }
 

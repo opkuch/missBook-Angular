@@ -7,6 +7,7 @@ import { BookDetailsComponent } from './pages/book-details/book-details.componen
 import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { BookResolver } from './services/book-resolver/book.resolver';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -16,6 +17,7 @@ const routes: Routes = [
           {
             path: ':id',
             component: BookDetailsComponent,
+            canActivate: [AuthGuard],
             resolve: {book: BookResolver}
           }
         ]

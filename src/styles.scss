@@ -26,14 +26,13 @@ body {
     right: 20px;
     padding: 1rem;
     border-radius: 3px;
-    outline: 1.5px solid rgba(245, 245, 245, 0.16);
     &.success {
-        background-color: rgb(49, 206, 49);
+        outline: 1.5px solid rgb(49, 206, 49);
         color: whitesmoke;
-
     }
     &.error {
-        background-color: rgb(185, 32, 32);
+        background-color: rgba(131, 18, 18, 0.952);
+        outline: 1.5px solid rgb(185, 32, 32);
         color: whitesmoke;
     }
 }

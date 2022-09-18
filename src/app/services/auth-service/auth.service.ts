@@ -6,7 +6,7 @@ import {
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { UserModel } from 'src/app/models/user.model';
 import * as auth from 'firebase/auth';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { UtilService } from '../utilservice/util.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   userData: any // Save logged in user data
-
-  constructor(public afs: AngularFirestore, // Inject Firestore service
+  isLoggedIn: boolean = false
+  constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     private UtilService: UtilService,
@@ -47,11 +47,12 @@ export class AuthService {
   authStatusListener(){
     this.afAuth.onAuthStateChanged((credential)=>{
       if(credential){
-        console.log(credential)
         this.authStatusSub.next(credential)
+        this.isLoggedIn = true
       }
       else{
         this.authStatusSub.next(null)
+        this.isLoggedIn = false
         console.log('User is logged out')
       }
     })
@@ -64,7 +65,9 @@ export class AuthService {
     });
   }
 
-
+  checkUserLogin(): Observable<boolean> {
+    return of(this.isLoggedIn)
+  }
   async signin(user: UserModel) {
     const { email, password } = user
     try {

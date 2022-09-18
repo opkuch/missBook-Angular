@@ -17,9 +17,7 @@ export class UtilService {
     return txt
   }
   public generateRandom(maxLimit = 100): number{
-    let rand = Math.random() * maxLimit
-    console.log(rand)
-  
+    let rand = Math.random() * maxLimit  
     rand = Math.floor(rand)
   
     return rand

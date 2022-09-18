@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 @Component({
   selector: 'user-navbar',
   templateUrl: './user-navbar.component.html',
