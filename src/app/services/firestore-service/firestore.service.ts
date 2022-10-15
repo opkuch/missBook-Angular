@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { BookModel } from 'src/app/models/book.model';
 import {
   addDoc, collection, deleteDoc, getDoc, doc,
-  getDocs, getFirestore, updateDoc, query, orderBy, startAt, endAt
+  getDocs, getFirestore, updateDoc, query, orderBy, startAt, endAt, setDoc
 } from "firebase/firestore";
 
 @Injectable({
@@ -33,9 +33,33 @@ export class FirestoreService {
       console.log('cannot get books', err)
     }
   }
+
   public getById(bookId: string): Observable<BookModel | void> {
     const book = this.books.find(book => book._id === bookId)
     if (book) return of({ ...book })
     return of()
 }
+
+async saveEntity(entity: any) {
+  const q = this.firestore.collection('books').ref
+  if (entity._id) {
+      const copyEntitiy = JSON.parse(JSON.stringify(entity))
+      const entityRef = doc(q, entity._id)
+      delete copyEntitiy._id
+      try {
+          await updateDoc(entityRef, copyEntitiy)
+          return entity
+      } catch (e) {
+          console.error("Error updating document: ", e);
+      }
+  } else {
+      try {
+        const newBookRef = doc(q)
+        await setDoc(newBookRef, entity)
+      } catch (e) {
+          console.error("Error saving document: ", e);
+      }
+  }
 }
+}
+

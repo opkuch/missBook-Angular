@@ -1,6 +1,9 @@
 
 <section class="narrow-container book-list-wrapper">
+  <section class="book-actions flex justify-center">
+    <a routerLink="edit">add book</a>
+  </section>
   <ul class="clean-list book-list">
-    <book-preview *ngFor="let book of books" [book]="book"></book-preview>
+    <book-preview *ngFor="let book of books" [book]="book" (bookToEdit)="editBook($event)"></book-preview>
   </ul>
 </section>

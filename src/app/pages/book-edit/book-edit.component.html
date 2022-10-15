@@ -1,0 +1,9 @@
+<section class="edit-container">
+    <div class="wrapper">
+        <a class="back" routerLink="/explore">X</a>
+        <input type="text" [(ngModel)]="book.title" />
+        <input type="text" [(ngModel)]="book.author" />
+        <textarea width="200" height="200" type="text" [(ngModel)]="book.description" ></textarea>
+        <button (click)="addBook()">submit</button>
+    </div>
+</section>

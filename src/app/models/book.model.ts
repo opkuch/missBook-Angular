@@ -5,8 +5,7 @@ export class BookModel {
         public description: string = '',
         public author: string = '',
         public imgUrl: string = '',
-        public rating: number | null = null,
-        public isStarred: boolean = false,
+        public reviews: Array<any> = []
         ) {
 
     }

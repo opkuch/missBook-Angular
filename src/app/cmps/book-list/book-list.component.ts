@@ -13,4 +13,7 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editBook(data: any) {
+    console.log(data)
+  }
 }

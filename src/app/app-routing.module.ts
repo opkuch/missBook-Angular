@@ -8,12 +8,24 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { BookResolver } from './services/book-resolver/book.resolver';
 import { AuthGuard } from './guards/auth.guard';
+import { BookEditComponent } from './pages/book-edit/book-edit.component';
 
 const routes: Routes = [
     {
         path: "explore",
         component: BookAppComponent,
         children: [
+          {
+            path: 'edit',
+            component: BookEditComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'edit/:id',
+            component: BookEditComponent,
+            canActivate: [AuthGuard],
+            resolve: {book: BookResolver}
+          },
           {
             path: ':id',
             component: BookDetailsComponent,

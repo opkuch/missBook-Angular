@@ -1,9 +1,11 @@
 .book-card {
     padding: 1rem;
     overflow: hidden;
-    box-shadow: 0 -1px rgba(162, 159, 159, 0.37);
     gap: 1rem;
     max-width: 625px;
+    box-shadow: 0 1px rgba(162, 159, 159, 0.37);
+    
+
     img {
         max-height: 120px;
     }

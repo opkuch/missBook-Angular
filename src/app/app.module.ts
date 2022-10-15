@@ -27,6 +27,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { environment } from '../environments/environment';
 import { SigninComponent } from './pages/signin/signin.component';
 import { LoaderComponent } from './cmps/loader/loader.component';
+import { BookEditComponent } from './pages/book-edit/book-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { LoaderComponent } from './cmps/loader/loader.component';
     BookDetailsComponent,
     SignupComponent,
     SigninComponent,
-    LoaderComponent
+    LoaderComponent,
+    BookEditComponent
   ],
   imports: [
     BrowserModule,
