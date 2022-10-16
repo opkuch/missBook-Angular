@@ -1,9 +1,16 @@
 <section class="edit-container">
     <div class="wrapper">
         <a class="back" routerLink="/explore">X</a>
-        <input type="text" [(ngModel)]="book.title" />
-        <input type="text" [(ngModel)]="book.author" />
-        <textarea width="200" height="200" type="text" [(ngModel)]="book.description" ></textarea>
-        <button (click)="addBook()">submit</button>
+        <div class="flex column justify-center align-center" #elseBlock style="width: '100%'">
+            <label for="imageUrl">Book Image</label>
+            <input type="text" id="imageUrl" [(ngModel)]="book.imgUrl" />    
+        </div>
+        <label for="title">Book Title</label>
+        <input type="text" id="title" [(ngModel)]="book.title" />
+        <label for="author">Author</label>
+        <input type="text" id="author" [(ngModel)]="book.author" />
+        <label for="description">Summary</label>
+        <textarea width="200" id="description" height="200" type="text" [(ngModel)]="book.description" ></textarea>
+        <button class="action-btn" (click)="addBook()">submit</button>
     </div>
 </section>

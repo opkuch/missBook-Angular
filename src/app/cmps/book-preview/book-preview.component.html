@@ -1,5 +1,8 @@
 <li class="flex book-card">
-    <img [src]="'assets/img/' + book.imgUrl" />
+        <img *ngIf="book.imgUrl.slice(0,4) !== 'http'; else elseBlock" [src]="'assets/img/' + book.imgUrl"/>
+        <ng-template #elseBlock>
+            <img [src]="book.imgUrl" alt=""/>
+        </ng-template>
     <section class="info">
         <h3 class="details-title" (click)="details()">{{book.title}}</h3>
         <h5>{{book.author}}</h5>
@@ -7,6 +10,8 @@
         <!-- <p>⭐⭐⭐⭐⭐ <span class="small-title smaller">4.29 avg rating - 387 ratings</span></p> -->
     </section>
     <section class="book-actions">
-        <button (click)="edit()">edit</button>
+        <button class="action-btn" (click)="edit()">edit</button>
+        <button class="action-btn" (click)="delete()">delete</button>
+
     </section>
 </li>

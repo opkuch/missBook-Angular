@@ -102,6 +102,8 @@ firebase/compat/auth
 
 firebase/compat/firestore
 
+firebase/firestore
+
 firebase/messaging
 
 firebase/remote-config

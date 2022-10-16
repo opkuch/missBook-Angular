@@ -194,6 +194,24 @@ button {
     background: linear-gradient(to right, rgb(110, 15, 0), rgb(103, 4, 42));
     border-radius: 5px;
 }
+.action-btn {
+    width: 85px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    background-color: rgb(103, 31, 31);
+    color: whitesmoke;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    &:hover {
+        outline: 1.5px solid rgb(103, 31, 31);
+        background-color: whitesmoke;
+        color: rgb(103, 31, 31);
+    }
+}
 .simple-button {
     background: transparent;
     color: black;

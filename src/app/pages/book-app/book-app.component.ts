@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from '../../models/book.model';
-import { BookService } from '../../services/book-service/book.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FirestoreService } from 'src/app/services/firestore-service/firestore.service';
 
@@ -12,15 +11,15 @@ import { FirestoreService } from 'src/app/services/firestore-service/firestore.s
 export class BookAppComponent implements OnInit {
 
   public books$!: Observable<BookModel[]>
-  isLoading: Boolean = true
+  isLoading: Boolean = false
 
-  constructor(private BookService: BookService, private FirestoreService: FirestoreService) { }
+  constructor(private FirestoreService: FirestoreService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false
-    }, 1500)
-    this.FirestoreService.queryBooks()
+    // setTimeout(() => {
+    //   this.isLoading = false
+    // }, 1500)
+    this.FirestoreService.queryBooks({txt: ''})
     this.books$ = this.FirestoreService.books$
   }
 

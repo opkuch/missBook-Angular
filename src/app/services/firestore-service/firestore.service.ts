@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { BookModel } from 'src/app/models/book.model';
 import {
   addDoc, collection, deleteDoc, getDoc, doc,
-  getDocs, getFirestore, updateDoc, query, orderBy, startAt, endAt, setDoc
+  getDocs, getFirestore, updateDoc, query, orderBy, setDoc
 } from "firebase/firestore";
 
 @Injectable({
@@ -18,7 +18,7 @@ export class FirestoreService {
   books$ = this._books$.asObservable()
 
   books: any[] = []
-  async queryBooks() {
+  async queryBooks(filterBy: any) {
     try {
       const q = this.firestore.collection('books').ref
       const booksSnapshot = await getDocs(q)
@@ -28,6 +28,13 @@ export class FirestoreService {
           return {_id: doc.id, ...bookData}
         }else return
       })
+      if (filterBy?.txt) {
+        const txt = filterBy.txt.toLowerCase()
+        this.books = this.books.filter(book => {
+          const loweredTitle = book.title.toLowerCase()
+          if (loweredTitle.includes(txt)) return book
+        })
+      }
       this._books$.next(this.books)
     }catch(err) {
       console.log('cannot get books', err)
@@ -59,6 +66,16 @@ async saveEntity(entity: any) {
       } catch (e) {
           console.error("Error saving document: ", e);
       }
+  }
+}
+async removeEntity(entityId: string) {
+  const q = this.firestore.collection('books').ref
+  try {
+      await deleteDoc(doc(q, entityId))
+      return true
+  } catch (e) {
+      console.error("Error deleting document: ", e);
+      return false
   }
 }
 }
